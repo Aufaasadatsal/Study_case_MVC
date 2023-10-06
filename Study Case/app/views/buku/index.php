@@ -27,7 +27,8 @@
         </thead>
         <tbody>
             <?php $no=1; ?>
-            <?php foreach ($data ['buku'] as $row) :?>
+            <?php date_default_timezone_set("asia/jakarta"); ?>
+            <?php foreach ($data['buku'] as $row) :?>
             <tr>
                 <td><?= $no; ?></td>
                 <td><?= $row ['nama_peminjam']; ?></td>
@@ -36,15 +37,17 @@
                 <td><?= $row ['tgl_pinjam']; ?></td>
                 <td><?= $row ['tgl_kembali']; ?></td>
                 <td>
-                    <?php
+                <?php
                 $tglPinjam = $row['tgl_pinjam'];
                 $tglKembali = $row['tgl_kembali'];
-                if ($tglKembali >= $tglPinjam) {
+                $today = date('Y-m-d H:i:s');
+
+                if ($tglPinjam >= $tglKembali || $today >= $tglKembali) {
                     echo '<span class="badge bg-success">Sudah Kembali</span>';
-                    $showEditButton = false; // Set variabel $showEditButton menjadi false jika sudah kembali.
-                } else {
+                    $showEditButton = false; 
+                    } else{
                     echo '<span class="badge bg-danger">Belum Kembali</span>';
-                    $showEditButton = true; // Set variabel $showEditButton menjadi true jika belum kembali.
+                    $showEditButton = true; 
                 }
                 ?>
                 </td>
