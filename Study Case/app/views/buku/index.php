@@ -37,9 +37,9 @@
                 <td><?= $row ['tgl_kembali']; ?></td>
                 <td>
                     <?php
-                $tglPinjam = strtotime($row['tgl_pinjam']);
-                $tglKembali = strtotime($row['tgl_kembali']);
-                if ($tglPinjam >= $tglKembali) {
+                $tglPinjam = $row['tgl_pinjam'];
+                $tglKembali = $row['tgl_kembali'];
+                if ($tglKembali >= $tglPinjam) {
                     echo '<span class="badge bg-success">Sudah Kembali</span>';
                     $showEditButton = false; // Set variabel $showEditButton menjadi false jika sudah kembali.
                 } else {

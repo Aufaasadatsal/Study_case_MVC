@@ -7,7 +7,7 @@
             <input type="hidden" name="id" value="<?= $data['minjam']['id']; ?>">
             <div class="form-group mb-3">
             <label for="nama_peminjam">Nama Peminjam</label>
-            <input type="text" class="form-control" name="nama_peminjam" value="apa"   >
+            <input type="text" class="form-control" name="nama_peminjam" value="Aufa">
 
         </div>
         <div class="form-group mb-3">

@@ -28,7 +28,7 @@ class MinjamModel {
 
         $tgl_pinjam = $data['tgl_pinjam'];
         
-        $tgl_kembali = date('Y-m-d H:i:s', strtotime($tgl_pinjam . ' +2 days'));
+        $tgl_kembali = date('Y-m-d H:i:s', strtotime($tgl_pinjam . ' +1 minutes'));
        
       
     
@@ -79,7 +79,7 @@ public function cari(){
     $data['judul'] = 'Data Peminjaman';
     $data['minjam'] = $this->model('MinjamModel')->cariMinjam();
     $this->view('templates/header', $data);
-    $this->view('minjam/index', $data);
+    $this->view('buku/index', $data);
     $this->view('templates/footer');
 }
 
@@ -87,6 +87,7 @@ public function cariMinjam()
     {
         $cari = $_POST['cari'];
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE nama_peminjam LIKE :cari');
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE jenis_barang LIKE :cari');
         $this->db->bind('cari', "%$cari%");
         return $this->db->resultSet();
     }
